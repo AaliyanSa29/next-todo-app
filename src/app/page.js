@@ -3,8 +3,10 @@ import { useRouter } from "next/navigation"; // 👈 import router properly
 import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaUser } from "react-icons/fa";
 import { FaTools, FaRegClock, FaHeadset, FaLock } from "react-icons/fa";
-import PopularProducts from "./components/Homepage/PopularProducts";
-import Footer from "./components/Homepage/Footer";
+// import PopularProducts from "./components/Homepage/PopularProducts";
+// import Footer from "./components/Homepage/Footer";
+import PopularProducts from "@/app/components/Homepage/PopularProducts";
+import Footer from "@/app/components/Homepage/Footer";
 
 export default function Homepage() {
   const router = useRouter(); // 👈 initialize router here

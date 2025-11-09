@@ -9,7 +9,8 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import Footer from "../components/Homepage/Footer";
+import Footer from "@/app/components/Homepage/Footer";
+
 import { useRef } from "react";
 
 export default function ContactUs() {

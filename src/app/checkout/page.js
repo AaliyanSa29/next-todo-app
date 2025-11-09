@@ -273,14 +273,16 @@
 //     </div>
 //   );
 // }
-
 "use client";
+
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { FaCreditCard, FaWallet } from "react-icons/fa";
+import { Suspense } from "react";
 import Image from "next/image";
 
-export default function PaymentForm() {
+// This is your REAL checkout page content
+function PaymentFormContent() {
   const [orderData, setOrderData] = useState({
     email: "",
     phone: "",
@@ -313,49 +315,32 @@ export default function PaymentForm() {
     setLoading(true);
 
     try {
-      // Simulate payment processing (2 seconds)
-      console.log("🔄 Processing fake payment...");
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("✅ Fake payment successful!");
 
-      // Now submit the order to backend
-      console.log("📤 Submitting order to backend...");
       const response = await fetch("/api/submitOrder", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: orderData.phone || "Anonymous",
           email: orderData.email,
           instructions: orderData.instructions || "",
-          productId: productId,
-          title: title,
-          price: price,
-          image: image,
+          productId,
+          title,
+          price,
+          image,
         }),
       });
 
       const result = await response.json();
-      console.log("📥 Backend response:", result);
+      if (!result.success) throw new Error(result.error);
 
-      if (!result.success) {
-        throw new Error(result.error || "Failed to save order.");
-      }
-
-      // Clear localStorage
       localStorage.removeItem("orderDetails");
 
-      // Show success message
-      alert(
-        `✅ Payment successful! Order ID: ${result.orderId}\n\nYour order has been placed successfully!`
-      );
+      alert(`✅ Payment successful! Order ID: ${result.orderId}`);
 
-      // Redirect to homepage
       router.push("/");
     } catch (err) {
-      console.error("❌ Error:", err);
-      setError(err.message || "Something went wrong. Please try again.");
+      setError(err.message || "Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -409,14 +394,13 @@ export default function PaymentForm() {
           </button>
         </div>
 
-        {/* Error Message */}
         {error && (
           <p className="text-red-600 text-sm mb-3 bg-red-50 border border-red-200 rounded-md p-2">
             {error}
           </p>
         )}
 
-        {/* Card Payment Form */}
+        {/* Card Form */}
         {method === "card" && (
           <form className="space-y-5" onSubmit={handlePayment}>
             <div>
@@ -491,7 +475,7 @@ export default function PaymentForm() {
           </form>
         )}
 
-        {/* E-Wallet Payment Form */}
+        {/* Wallet Form */}
         {method === "ewallet" && (
           <form className="space-y-5" onSubmit={handlePayment}>
             <div>
@@ -543,7 +527,7 @@ export default function PaymentForm() {
             </div>
 
             <p className="text-xs text-gray-500 leading-5">
-              Youll be redirected to your selected e-wallet app to complete the
+              You’ll be redirected to your selected e-wallet app to complete the
               payment securely.
             </p>
 
@@ -562,5 +546,14 @@ export default function PaymentForm() {
         )}
       </div>
     </div>
+  );
+}
+
+// ✅ THIS fixes the Next.js error
+export default function PaymentForm() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center">Loading...</div>}>
+      <PaymentFormContent />
+    </Suspense>
   );
 }

@@ -2,8 +2,8 @@
 // SIMPLE VERSION - Only saves to MongoDB (no Sanity needed)
 
 import { NextResponse } from "next/server";
-import { connectDB } from "../../../lib/connectDB";
-import UserOrder from "../../../models/userOrder";
+import { connectDB } from "lib/connectDB";
+import UserOrder from "models/userOrder";
 
 export async function POST(req) {
   try {
