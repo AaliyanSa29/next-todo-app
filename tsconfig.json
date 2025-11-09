@@ -43,7 +43,6 @@
       "dom.iterable",
       "esnext"
     ],
-    
     "allowJs": true,
     "checkJs": true, // ✅ Enable JS error checking
     "skipLibCheck": true,
@@ -78,7 +77,9 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next\\dev/types/**/*.ts",
+    ".next\\dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
