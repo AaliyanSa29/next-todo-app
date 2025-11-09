@@ -543,7 +543,7 @@ export default function PaymentForm() {
             </div>
 
             <p className="text-xs text-gray-500 leading-5">
-              You'll be redirected to your selected e-wallet app to complete the
+              Youll be redirected to your selected e-wallet app to complete the
               payment securely.
             </p>
 

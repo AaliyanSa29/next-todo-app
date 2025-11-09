@@ -4,8 +4,6 @@ import Image from "next/image";
 import {
   FaFacebookF,
   FaInstagram,
-  FaYoutube,
-  FaShoppingCart,
   FaUser,
   FaPhoneAlt,
   FaEnvelope,

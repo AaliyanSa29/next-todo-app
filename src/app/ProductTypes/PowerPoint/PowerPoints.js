@@ -109,7 +109,6 @@ export default function PowerPointTemplates() {
             )}
 
             {products.map((product, i) => {
-              const isMain = i === index;
               const nextProduct = products[i + 1];
 
               return (

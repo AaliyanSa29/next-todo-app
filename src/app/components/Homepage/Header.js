@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FaFacebookF, FaInstagram, FaYoutube, FaUser } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaUser } from "react-icons/fa";
 
 export default function Header() {
   const router = useRouter();
@@ -21,6 +21,9 @@ export default function Header() {
   function GoToContact() {
     router.push("/contact");
   }
+  function GoToHome() {
+    router.push("/");
+  }
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-gray-900 shadow-sm">
@@ -38,7 +41,10 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-8 text-sm font-medium text-white">
-          <a href="/" className="hover:text-lime-600 transition-colors">
+          <a
+            onClick={GoToHome}
+            className="hover:text-lime-600 transition-colors"
+          >
             Home
           </a>
           <a onClick={GoToShop} className="hover:text-lime-600  cursor-pointer">

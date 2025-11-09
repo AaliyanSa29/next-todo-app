@@ -5,9 +5,8 @@ import { FaFacebookF, FaInstagram, FaUser } from "react-icons/fa";
 import { FaTools, FaRegClock, FaHeadset, FaLock } from "react-icons/fa";
 import PopularProducts from "./components/Homepage/PopularProducts";
 import Footer from "./components/Homepage/Footer";
-import AboutUs from "./about/page";
 
-export default function HomePage() {
+export default function Homepage() {
   const router = useRouter(); // 👈 initialize router here
 
   function GoToItems() {
@@ -16,10 +15,6 @@ export default function HomePage() {
 
   function GoToAbout() {
     router.push("/about");
-  }
-
-  function ContactUs() {
-    router.push("/contact");
   }
 
   function facebook() {
@@ -32,10 +27,6 @@ export default function HomePage() {
 
   function instagram() {
     router.push("www.instagram.com");
-  }
-
-  function youtube() {
-    router.push("www.youtube.com");
   }
 
   return (

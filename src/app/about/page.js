@@ -4,8 +4,6 @@ import Image from "next/image";
 import {
   FaFacebookF,
   FaInstagram,
-  FaYoutube,
-  FaShoppingCart,
   FaUser,
   FaMousePointer,
   FaClipboardList,
@@ -17,7 +15,7 @@ import {
 import Footer from "../components/Homepage/Footer";
 import { useRef } from "react";
 
-export default function AboutUs() {
+export default function About() {
   const router = useRouter();
   const processRef = useRef(null); // 👈 Reference to the Work Process section
 
