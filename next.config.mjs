@@ -1,19 +1,8 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   images: {
-//     remotePatterns: [
-//       {
-//         protocol: "https",
-//         hostname: "cdn.sanity.io",
-//         port: "",
-//         pathname: "/images/**",
-//       },
-//     ],
-//     domains: ["cdn.sanity.io"],
-//   },
-// };
+import path from "path";
+import { fileURLToPath } from "url";
 
-// export default nextConfig;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -29,11 +18,11 @@ const nextConfig = {
   },
 
   typescript: {
-    ignoreBuildErrors: true, // ✅ Ignore TypeScript errors (JS project)
+    ignoreBuildErrors: true,
   },
 
-  eslint: {
-    ignoreDuringBuilds: true, // ✅ Skip ESLint errors during build
+  turbopack: {
+    root: __dirname,
   },
 };
 
